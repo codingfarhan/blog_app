@@ -7,7 +7,15 @@ import { AiOutlineBell } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 
 // exporting the final navbar component:
-export default function NavbarComponent() {
+export default function NavbarComponent(props) {
+  // prop:
+
+  let extra_classes = props.extra_classes;
+
+  console.log(extra_classes);
+
+  ////
+
   const [ProfileDropdownState, setDropdownState] = useState(false);
   const [NotificationDropdownState, setNotificationDropdownState] =
     useState(false);
@@ -41,7 +49,12 @@ export default function NavbarComponent() {
     setNotificationDropdownState(false);
   }
   return (
-    <div className="flex flex-row w-screen h-20 bg-red-900 items-center fixed">
+    <div
+      className={
+        "flex flex-row w-screen h-20 bg-red-900 items-center fixed " +
+        extra_classes
+      }
+    >
       <div
         className="icon flex ml-5 flex-initial w-1/5 text-7xl sm:ml-20 hover:cursor-pointer"
         onClick={() => {
@@ -81,6 +94,7 @@ export default function NavbarComponent() {
               "Someone just commented on your Blog!",
               "Someone just Liked your Blog!",
             ]}
+            selectedOptions={[]}
           />
         )}
         <CgProfile
@@ -94,7 +108,10 @@ export default function NavbarComponent() {
         />
 
         {ProfileDropdownState && (
-          <SimpleDropdown itemsList={["My Profile", "My Blogs", "Settings"]} />
+          <SimpleDropdown
+            itemsList={["My Profile", "My Blogs", "Settings"]}
+            selectedOptions={[]}
+          />
         )}
       </div>
       <HamburgerMobileNavDropdown

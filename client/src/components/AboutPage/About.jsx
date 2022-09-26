@@ -6,7 +6,7 @@ import NavbarComponent from "../Common_Components/NavbarComp";
 export default function About() {
   return (
     <div className="flex flex-col overflow-x-hidden bg-gradient-to-r from-gray-800 via-red-100000 to-gray-900">
-      <NavbarComponent />
+      <NavbarComponent extra_classes={"z-0"} />
       <Content />
     </div>
   );

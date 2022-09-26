@@ -5,20 +5,38 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 export function SimpleDropdown(props) {
   let itemsList = props.itemsList;
+  let selectedOptions = props.selectedOptions;
+
   console.log(itemsList);
+  console.log(selectedOptions);
+
   return (
     <div className="dropdown text-black h-auto min-w-24 p-5 bg-white font-bold text-sm mt-14 rounded z-50 absolute text-center font-mono">
       <ul>
-        {itemsList.map((item) => {
-          return (
-            <li
-              key={itemsList.indexOf(item)}
-              className="hover:bg-gray-100 hover:cursor-pointer"
-            >
-              {item}
-            </li>
-          );
-        })}
+        {selectedOptions.length === 0
+          ? itemsList.map((item) => {
+              return (
+                <li
+                  key={itemsList.indexOf(item)}
+                  className="hover:bg-gray-100 hover:cursor-pointer"
+                >
+                  {item}
+                </li>
+              );
+            })
+          : itemsList.map((item) => {
+              return (
+                <li
+                  key={itemsList.indexOf(item)}
+                  className={
+                    "hover:bg-gray-100 hover:cursor-pointer " +
+                    (selectedOptions.includes(item) ? "bg-green-200" : "")
+                  }
+                >
+                  {item}
+                </li>
+              );
+            })}
       </ul>
     </div>
   );
@@ -44,7 +62,10 @@ export function HamburgerMobileNavDropdown(props) {
         }}
       />
       {MobileDropdownState && (
-        <SimpleDropdown itemsList={props.MobileItemsList[0]} />
+        <SimpleDropdown
+          itemsList={props.MobileItemsList[0]}
+          selectedOptions={[]}
+        />
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import RegistrationForm from "./UserRegistration/RegistrationForm";
 import { PickUsername } from "./UserRegistration/PickUsername";
 import LoginPage from "./UserLogin/LoginPage";
 import ExploreBlogsPage from "./ExploreBlogs/ExploreBlogsPage";
+import ProfilePage from "./ProfilePage/ProfilePage";
 
 // The 'App' functional component:
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path={"/signup/pickUsername"} element={<PickUsername />} />
         <Route path={"/login"} element={<LoginPage />} />
         <Route path={"/blogs"} element={<ExploreBlogsPage />} />
+        <Route path={"/profile/user"} element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
